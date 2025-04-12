@@ -1,15 +1,24 @@
 {
   "name": "devspace",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "DevSpace monorepo",
   "scripts": {
-    "dev:website": "cd apps/website && next dev --port 3000",
-    "dev:dashboard": "cd apps/dashboard && next dev --port 3001",
-    "dev:admin": "cd apps/admin && next dev --port 3002",
+    "dev:website": "cd apps/website && next dev",
+    "dev:dashboard": "cd apps/dashboard && next dev",
+    "dev:admin": "cd apps/admin && next dev",
     "dev": "concurrently \"npm run dev:website\" \"npm run dev:dashboard\" \"npm run dev:admin\"",
-    "build": "turbo run build",
-    "start": "turbo run start",
+    
+    "build:website": "cd apps/website && next build",
+    "build:dashboard": "cd apps/dashboard && next build",
+    "build:admin": "cd apps/admin && next build",
+    "build": "npm run build:website && npm run build:dashboard && npm run build:admin",
+    
+    "start:website": "cd apps/website && next start",
+    "start:dashboard": "cd apps/dashboard && next start",
+    "start:admin": "cd apps/admin && next start",
+    "start": "concurrently \"npm run start:website\" \"npm run start:dashboard\" \"npm run start:admin\"",
+    
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
